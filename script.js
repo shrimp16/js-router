@@ -16,7 +16,7 @@ class IndexView {
     }
 
     async loadContent(uri) {
-        const contentUri = `${uri}.html`;
+        const contentUri = `/pages/${uri}.html`;
         await fetch(contentUri)
         .then((response) => {
             console.log(response);
@@ -37,7 +37,7 @@ class IndexView {
     }
 
     async notFound() {
-        await fetch('404.html')
+        await fetch('/pages/404.html')
             .then((response) => {
                 response.text()
                     .then((response) => {
