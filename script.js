@@ -1,6 +1,15 @@
-
-
 class IndexView {
+
+    routes = {
+        'login': () => {
+            alert('I wonder if this works');
+        },
+        'register': () => {
+            alert('Does it?');
+        },
+        '404': this.notFound()
+    }
+
     constructor() {
         window.addEventListener("hashchange", (e) => {
             this.onRouteChange(e);
@@ -19,11 +28,12 @@ class IndexView {
         const contentUri = `/pages/${uri}.html`;
         await fetch(contentUri)
         .then((response) => {
-            console.log(response);
             if(response.status === 404){
-                this.notFound();
+                alert("xd");
+                this.routes['404'];
                 return;
             }else {
+                this.routes[uri]();
                 response.text()
                 .then((content) => {
                     this.updateSlot(content);
