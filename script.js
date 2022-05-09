@@ -17,14 +17,33 @@ class IndexView {
 
     async loadContent(uri) {
         const contentUri = `${uri}.html`;
-        await fetch(contentUri).then(response => response.text()).then((content) => {
-            console.log(content);
-            this.updateSlot(content);
+        await fetch(contentUri)
+        .then((response) => {
+            console.log(response);
+            if(response.status === 404){
+                this.notFound();
+                return;
+            }else {
+                response.text()
+                .then((content) => {
+                    this.updateSlot(content);
+                })
+            }
         })
     }
 
     updateSlot(content) {
         this.slot.innerHTML = content;
+    }
+
+    async notFound() {
+        await fetch('404.html')
+            .then((response) => {
+                response.text()
+                    .then((response) => {
+                        this.updateSlot(response);
+                    }) 
+            })
     }
 }
 
