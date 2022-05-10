@@ -37,6 +37,7 @@ class Router {
             .then((response) => {
                 response.text()
                     .then((response) => {
+                        document.title = '404 | JS-Router'
                         this.slot.innerHTML = response;
                     })
             })
@@ -54,6 +55,7 @@ class HomePage {
         await fetch('/pages/home.html')
             .then((response) => response.text()
                 .then((response) => {
+                    document.title = 'Home | JS-Router'
                     document.querySelector('#slot').innerHTML = response;
                 }))
     }
@@ -75,6 +77,7 @@ class Login {
     }
 
     preparePage() {
+        document.title = 'Login | JS-Router'
         document.getElementById('submit').addEventListener('click', () => {
             console.log(document.querySelector('#un').value);
             console.log(document.querySelector('#pw').value);
@@ -98,6 +101,7 @@ class Register {
     }
 
     preparePage() {
+        document.title = 'Resgister | JS-Router'
         document.getElementById('register').addEventListener('click', () => {
             console.log('REGISTER');
             console.log(document.querySelector('#un').value);
