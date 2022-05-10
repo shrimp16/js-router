@@ -21,25 +21,28 @@ class IndexView {
     onRouteChange(e) {
         const hashLocation = window.location.hash.substring(1);
         console.log(hashLocation);
-        this.loadContent(hashLocation);
+        if (hashLocation === "") {
+            this.slot.innerHTML = "";
+        } else {
+            this.loadContent(hashLocation);
+        }
     }
 
     async loadContent(uri) {
         const contentUri = `/pages/${uri}.html`;
         await fetch(contentUri)
-        .then((response) => {
-            if(response.status === 404){
-                alert("xd");
-                this.routes['404'];
-                return;
-            }else {
-                this.routes[uri]();
-                response.text()
-                .then((content) => {
-                    this.updateSlot(content);
-                })
-            }
-        })
+            .then((response) => {
+                if (response.status === 404) {
+                    this.routes['404'];
+                    return;
+                } else {
+                    this.routes[uri]();
+                    response.text()
+                        .then((content) => {
+                            this.updateSlot(content);
+                        })
+                }
+            })
     }
 
     updateSlot(content) {
@@ -52,7 +55,7 @@ class IndexView {
                 response.text()
                     .then((response) => {
                         this.updateSlot(response);
-                    }) 
+                    })
             })
     }
 }
