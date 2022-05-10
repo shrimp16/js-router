@@ -14,8 +14,10 @@ class Router {
         const url = Array.from(hashLocation.split('/'));
         this.slot.innerHTML = '';
 
+        console.log(url[0]);
+
         switch (url[0]) {
-            case '/': 
+            case '': 
                 new HomePage();
                 break;
             case 'login':
@@ -39,6 +41,20 @@ class Router {
 }
 
 new Router();
+
+class HomePage {
+    constructor() {
+        this.loadPage();
+    }
+
+    async loadPage() {
+        await fetch('/pages/home.html')
+            .then((response) => response.text()
+                .then((response) => {
+                    document.querySelector('#slot').innerHTML = response;
+                }))
+    }
+}
 
 class Login {
 

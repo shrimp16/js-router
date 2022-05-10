@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/shrimp16/js-router/issues"
   },
-  "homepage": "https://github.com/shrimp16/js-router#readme"
+  "homepage": "https://github.com/shrimp16/js-router#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
