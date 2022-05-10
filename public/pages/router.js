@@ -9,9 +9,7 @@ export default class Router {
             this.routeChangeHandler();
         })
         this.slot = document.querySelector('#slot');
-        document.body.onload = () => {
-            this.routeChangeHandler();
-        }
+        this.routeChangeHandler();
     }
 
     routeChangeHandler() {

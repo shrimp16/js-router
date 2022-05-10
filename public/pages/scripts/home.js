@@ -4,7 +4,7 @@ export default class HomePage {
     }
 
     async loadPage() {
-        await fetch('/pages/structures/pages/home.html')
+        await fetch('/pages/structures/home.html')
             .then((response) => response.text()
                 .then((response) => {
                     document.title = 'Home | JS-Router'
