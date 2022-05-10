@@ -1,11 +1,11 @@
-class Login {
+export default class Login {
 
     constructor() {
         this.loadPage();
     }
 
     async loadPage() {
-        await fetch('../structures/login.html')
+        await fetch('/pages/structures/login.html')
             .then((response) => response.text()
                 .then((response) => {
                     document.querySelector('#slot').innerHTML = response;

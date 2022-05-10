@@ -1,11 +1,11 @@
-class Register {
+export default class Register {
 
     constructor() {
         this.loadPage();
     }
 
     async loadPage() {
-        await fetch('../structures/register.html')
+        await fetch('/pages/structures/register.html')
             .then((response) => response.text()
                 .then((response) => {
                     document.querySelector('#slot').innerHTML = response;
