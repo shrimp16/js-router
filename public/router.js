@@ -17,11 +17,14 @@ class Router {
         console.log(url[0]);
 
         switch (url[0]) {
-            case '': 
+            case '':
                 new HomePage();
                 break;
             case 'login':
                 new Login();
+                break;
+            case 'register':
+                new Register();
                 break;
             default:
                 this.notFound();
@@ -75,6 +78,31 @@ class Login {
         document.getElementById('submit').addEventListener('click', () => {
             console.log(document.querySelector('#un').value);
             console.log(document.querySelector('#pw').value);
+        })
+    }
+}
+
+class Register {
+
+    constructor() {
+        this.loadPage();
+    }
+
+    async loadPage() {
+        await fetch('/pages/register.html')
+            .then((response) => response.text()
+                .then((response) => {
+                    document.querySelector('#slot').innerHTML = response;
+                }))
+        this.preparePage();
+    }
+
+    preparePage() {
+        document.getElementById('register').addEventListener('click', () => {
+            console.log('REGISTER');
+            console.log(document.querySelector('#un').value);
+            console.log(document.querySelector('#pw').value);
+            console.log(document.querySelector('#email').value);
         })
     }
 }
